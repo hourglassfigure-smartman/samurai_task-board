@@ -38,6 +38,50 @@ git push origin <ブランチ名>
 - PR タイトルは 70 文字以内
 - `gh pr create` コマンドで PR を作成する
 
+## デプロイ先
+
+https://hourglassfigure-smartman.github.io/samurai_task-board/
+
+- `main` ブランチへのプッシュで GitHub Actions が自動ビルド・デプロイする
+- ビルド成果物は `dist/` に出力される（`.gitignore` で除外済み）
+
+## 技術スタック
+
+| 種別 | 採用技術 |
+|------|----------|
+| UI ライブラリ | React 18 |
+| ビルドツール | Vite 5 |
+| 言語 | JavaScript (JSX) |
+| スタイル | Plain CSS（CSS Modules 不使用） |
+| 状態管理 | React `useState` / `useEffect` |
+| 永続化 | `localStorage` |
+| CI/CD | GitHub Actions |
+| ホスティング | GitHub Pages |
+
+## コンポーネント命名規約
+
+### ファイル・コンポーネント名
+- **PascalCase** を使用する（例: `TaskItem.jsx`）
+- 1ファイル1コンポーネント、ファイル名とコンポーネント名を一致させる
+- コンポーネントは `src/components/` に配置する
+
+### CSS クラス名
+- **BEM 記法**を使用する
+  - ブロック: `.task-item`
+  - エレメント: `.task-item__text`
+  - モディファイア: `.task-item--completed`
+
+### コンポーネント構成
+
+```
+src/
+├── App.jsx              # ルートコンポーネント・状態管理
+└── components/
+    ├── TaskInput.jsx    # タスク入力フォーム
+    ├── TaskList.jsx     # タスク一覧
+    └── TaskItem.jsx     # 個別タスク行
+```
+
 ## 開発ルール
 
 - 不要なコメントは書かない（WHY が自明でない場合のみ記述）
