@@ -15,7 +15,7 @@ function TaskItem({ task, onToggle, onDelete }) {
         onClick={() => onDelete(task.id)}
         aria-label="タスクを削除"
       >
-        ✕
+        削除
       </button>
     </li>
   )
